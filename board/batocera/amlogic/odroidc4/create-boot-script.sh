@@ -6,7 +6,6 @@
 # BINARIES_DIR = images dir
 # TARGET_DIR = target dir
 # BATOCERA_BINARIES_DIR = batocera binaries sub directory
-# BATOCERA_TARGET_DIR = batocera target sub directory
 
 HOST_DIR=$1
 BOARD_DIR=$2
@@ -14,8 +13,6 @@ BUILD_DIR=$3
 BINARIES_DIR=$4
 TARGET_DIR=$5
 BATOCERA_BINARIES_DIR=$6
-BATOCERA_TARGET_DIR=$7
-
 
 MKIMAGE=${HOST_DIR}/bin/mkimage
 # boot
@@ -26,9 +23,8 @@ mkdir -p "${BINARIES_DIR}/boot/extlinux" || exit 1
 cp "${BOARD_DIR}/boot/boot-logo.bmp.gz"                "${BINARIES_DIR}/boot"                                       || exit 1
 cp "${BINARIES_DIR}/batocera-boot.conf"                "${BINARIES_DIR}/boot/batocera-boot.conf"                    || exit 1
 cp "${BINARIES_DIR}/uImage"                            "${BINARIES_DIR}/boot/boot/linux"                            || exit 1
-cp "${BINARIES_DIR}/meson-g12b-odroid-n2.dtb"          "${BINARIES_DIR}/boot/boot/meson-g12b-odroid-n2.dtb"         || exit 1
-cp "${BINARIES_DIR}/meson-g12b-odroid-n2-plus.dtb"     "${BINARIES_DIR}/boot/boot/meson-g12b-odroid-n2_plus.dtb"    || exit 1
-cp "${BINARIES_DIR}/uInitrd"                           "${BINARIES_DIR}/boot/boot/uInitrd"                          || exit 1
+cp "${BINARIES_DIR}/meson-sm1-odroid-c4.dtb"           "${BINARIES_DIR}/boot/boot/meson-sm1-odroid-c4.dtb"          || exit 1
+cp "${BINARIES_DIR}/initrd.gz"                         "${BINARIES_DIR}/boot/boot/initrd.gz"                        || exit 1
 cp "${BINARIES_DIR}/rootfs.squashfs"                   "${BINARIES_DIR}/boot/boot/batocera.update"                  || exit 1
 cp "${BOARD_DIR}/boot/extlinux.conf"                   "${BINARIES_DIR}/boot/extlinux"                              || exit 1
 cp "${BINARIES_DIR}/u-boot.bin"                        "${BINARIES_DIR}/boot/u-boot.bin"                            || exit 1
@@ -36,7 +32,7 @@ cp "${BOARD_DIR}/boot/extlinux.conf"                   "${BINARIES_DIR}/boot/boo
 cp "${BOARD_DIR}/boot/boot.ini"                        "${BINARIES_DIR}/boot/boot.ini"                              || exit 1
 cp "${BOARD_DIR}/boot/config.ini"                      "${BINARIES_DIR}/boot/config.ini"                            || exit 1
 cp -pr "${BINARIES_DIR}/tools"                         "${BINARIES_DIR}/boot/" || exit 1
-cp "${BINARIES_DIR}/u-boot.bin"                        "${BINARIES_DIR}/boot/" || exit 1
+cp "${BINARIES_DIR}/u-boot.bin.sd.bin"                  "${BINARIES_DIR}/boot/" || exit 1
 
 # boot.tar.xz
 echo "creating boot.tar.xz"
