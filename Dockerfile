@@ -8,6 +8,7 @@ RUN dpkg --add-architecture i386 && \
 		libncurses6:i386 \
 		libstdc++6:i386 \
 		build-essential \
+		sudo \
 		git \
 		libncurses6 \
 		libncurses-dev \
@@ -41,6 +42,8 @@ RUN dpkg --add-architecture i386 && \
 		lzop \
 		proxychains \
 	&& apt clean
+	
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 # Set locale
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
