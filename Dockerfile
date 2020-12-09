@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+RUN apt-get clean
 RUN dpkg --add-architecture i386 && \
 	apt update && \
 	apt install -y -o APT::Immediate-Configure=0 libc6:i386 \
@@ -35,6 +37,9 @@ RUN dpkg --add-architecture i386 && \
 		locales \
 		graphviz \
 		python \
+		curl \
+		lzop \
+		sudo
 	&& apt clean
 
 # Set locale
