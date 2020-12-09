@@ -39,6 +39,7 @@ RUN dpkg --add-architecture i386 && \
 		python \
 		curl \
 		lzop \
+		proxychains \
 	&& apt clean
 
 # Set locale
