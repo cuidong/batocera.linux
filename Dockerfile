@@ -39,7 +39,6 @@ RUN dpkg --add-architecture i386 && \
 		python \
 		curl \
 		lzop \
-		sudo \
 	&& apt clean
 
 # Set locale
